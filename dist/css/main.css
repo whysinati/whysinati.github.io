@@ -1,74 +1,62 @@
-.avatar {
-    border-radius: 50%; 
-    float: left; 
-    margin-right: 1em;
-  }
+/* mixins */
+/* clear floats */
+/* variables */
+/* Utility Classes */
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }
 
-  body{
-    padding: 0;
-    margin: 0;
-  }
+/** Rows and Columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both; }
 
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+.col {
+  float: left;
+  width: 25%;
+  padding: .5rem;
+  /* debug */
+  border: 1px solid #990000;
+  background: #fff; }
 
+/* universal settings */
 * {
-  font-family: 'Open Sans', sans-serif;
-}
+  box-sizing: border-box; }
 
-header {
-    height: 50px;
-    background: #000;
-    color: #fff;
-    padding: 0 .5rem 0 1rem;
-  }
-  
-  header .logo{
-    line-height: 50px;
-    font-weight: bold;
-  }
-  
-  nav {
-    float: right;
-  }
-  
-  nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  nav ul li{
-    display: inline;
-  }
-  
-  nav ul li a,
-  nav ul li a:link,
-  nav ul li a:visited{
-    display: inline-block;
-    padding: 0 .5rem;
-    color: #fff;
-    line-height: 50px;
-    text-decoration: none;
-  }
-  
-  nav ul li a:hover{
-    background: #444;
-  }
+body {
+  font: 100% "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+  margin: 0 auto;
+  padding: 0;
+  width: 1170px; }
 
-  main {
-    /* Use a margin to center the page */
-    margin: 0 auto;
-  
-    /* Set the width of the content */
-    width: 960px;
-  
-    /* For smaller screens to not exceed the max screen width */
-    max-width: 90%;
-    /*max-width: 100%; */
-  }
+.text-success {
+  color: #3c763d; }
 
-/*  @media only screen and (max-width: 960px)  {
-    main {
-        max-width: 90%;
-    }
-} */
+.text-error {
+  color: #a94442; }
+
+.text-warning {
+  color: #8a6d3b; }
+
+.message, .message-success, .message-error, .message-warning {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  color: #333; }
+
+.message-success {
+  border-color: #3c763d;
+  color: #3c763d; }
+
+.message-error {
+  border-color: #a94442;
+  color: #a94442; }
+
+.message-warning {
+  border-color: #8a6d3b;
+  color: #8a6d3b; }
+
+/*# sourceMappingURL=main.css.map */
