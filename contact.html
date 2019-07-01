@@ -4,14 +4,44 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Christa Fuhrhop</title>
+        <link rel="stylesheet" type="text/css" href="./dist/css/main.css">
+        <!-- <img src="https://www.gravatar.com/avatar/4678a33bf44c38e54a58745033b4d5c6?d=mm&s=64" alt="My Avatar"> -->
+        <meta name="keywords" content="Christa, contact">
+        <meta name="description" content="Welcome to Christa's Contact Page!">
     </head>
     <body>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="resume.html">Resume</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <header>
+            <span class="logo">Contact Christa</span>
+            <a id="toggleMenu">Menu</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+                <h1>Christa Fuhrhop</h1>
+                <p> <!--<img style="border-radius: 50%; float: right; margin-right: 1em;" src="..." alt="...">-->
+                <img style="border-radius: 10%; float: left; margin-right: 1em;" src="https://www.gravatar.com/avatar/4678a33bf44c38e54a58745033b4d5c6?d=mm&s=64" alt="Christa's Avatar">
+                Contact page under construction...
+                </p>
+            </main>
+                <script>
+        
+                    var toggleMenu = document.getElementById('toggleMenu');
+                    var nav = document.querySelector('nav');
+                    toggleMenu.addEventListener(
+                      'click',
+                      function(){
+                        if(nav.style.display=='block'){
+                          nav.style.display='none';
+                        }else{
+                          nav.style.display='block';
+                        }
+                      }
+                    );
+                </script>
     </body>
 </html>
