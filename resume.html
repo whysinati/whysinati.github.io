@@ -3,16 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Christa Fuhrhop</title>
         <link rel="stylesheet" type="text/css" href="./dist/css/main.css">
-        <!-- <img src="https://www.gravatar.com/avatar/4678a33bf44c38e54a58745033b4d5c6?d=mm&s=64" alt="My Avatar"> -->
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
         <meta name="keywords" content="Christa, resume">
         <meta name="description" content="Welcome to Christa's Resume Page!">
     </head>
     <body>
         <header>
-            <span class="logo">My Website</span>
             <a id="toggleMenu">Menu</a>
+            <span class="logo">
+                <h2 class="fas fa-hand-holding-heart"></h2>
+            </span>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -23,24 +26,54 @@
         </header>
 
         <main>
-            <h1>Christa Fuhrhop</h1>
-            <p> <!--<img style="border-radius: 50%; float: right; margin-right: 1em;" src="..." alt="...">-->
-            <img style="border-radius: 10%; float: left; margin-right: 1em;" src="https://www.gravatar.com/avatar/4678a33bf44c38e54a58745033b4d5c6?d=mm&s=64" alt="Christa's Avatar">
-            Resume under construction...
-            </p>
+            <h1>Christa Fuhrhop
+                <!-- <img style="border-radius: 10%; float: left; margin-right: 1em;" src="https://www.gravatar.com/avatar/4678a33bf44c38e54a58745033b4d5c6?d=mm&s=64" alt="Christa's Avatar"> -->
+                <img style="border-radius: 10%; float: left; margin-right: 1em;" src="https://avatars2.githubusercontent.com/u/41346642?s=460&v=4" width = "90" alt="Christa's Avatar">
+              </h1>
+            <h2>Full Stack Web Developer</h2>
+            <strong><em>Curious software developer who loves to build engaging full stack web applications that delight customers and grow business
+              </em></strong>
+            <h2>
+              Skills and Expertise
+            </h2>
+            <ul style="list-style: none;">
+              <li>HTML5 / CSS / JavaScript / jQuery</li>
+              <li>Linux / Bash Shell / Command Line / Git</li>
+              <li>LAMP Stack (Linux, Apache, MySQL, PHP)</li>
+              <li>MEAN Stack (MongoDB, Express, Angular, Node.js)</li>
+              <li>Sparx Systems Enterprise Architect (Process Modeling) </li>
+              <li>SAS Visual Analytics / Enterprise Guide </li>
+              <li>Python / Pandas / Matplotlib / Pyplot</li>
+              <li>Microsoft Excel / VBA</li>
+              <li>Tableau</li>
+            </ul>
+            <h2>Education</h2>
+            <ul style="list-style: none;">
+              <li><strong>Agile Full Stack Web & Hybrid Mobile Application Developer</strong> – MicroTrain Technologies</li>
+              <li><strong>MBA, Finance</strong> – Carleton University, Sprott School of Business, Ottawa ON, Canada</li>
+              <li><strong>BS, Engineering</strong> – University of Illinois, Urbana-Champaign IL</li>
+            </ul>
+          <h2>Professional Experience</h2>
+            <ul style="list-style: none;">
+            <li>Software Developer – Consulting</li>
+            <li>VP, Senior Consultant – Northern Trust</li>
+            <li>Manager, Process Management – Capital One Financial</li>
+            <li>Manager, Strategic Support – Navistar</li>
+            <li>MBA Intern – CVS Caremark</li>
+            <li>Product Manager – Caterpillar Inc.</li>
+          </ul>
         </main>
             <script>
-    
                 var toggleMenu = document.getElementById('toggleMenu');
                 var nav = document.querySelector('nav');
                 toggleMenu.addEventListener(
-                  'click',
+                  'mouseover',
                   function(){
-                    if(nav.style.display=='block'){
+                    if(nav.style.display==='block'){
                       nav.style.display='none';
-                    }else{
-                      nav.style.display='block';
-                    }
+                    // }else if(!event.target.matches('nav')){
+                    //   nav.style.display='none';
+                    }else{nav.style.display='block'};
                   }
                 );
             </script>

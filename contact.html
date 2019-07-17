@@ -33,15 +33,27 @@
                     var toggleMenu = document.getElementById('toggleMenu');
                     var nav = document.querySelector('nav');
                     toggleMenu.addEventListener(
-                      'click',
+                      'mouseover',
                       function(){
-                        if(nav.style.display=='block'){
-                          nav.style.display='none';
-                        }else{
+                        // if(nav.style.display=='none'){
                           nav.style.display='block';
-                        }
-                      }
+                        // }else{
+                          nav.addEventListener('mouseout',
+                            function(){
+                              nav.style.display='none';
+                            },true);
+                        },true
+                    //   }
                     );
+                    // nav.addEventListener('mouseout',
+                    // function(){
+                    //   if(toggleMenu.style.display==='none'){
+                    //       nav.style.display='block';
+                    //   }else{
+                    //     nav.style.display='none';
+                        // nav.style.display='inline';
+                    //     }
+                    // });
                 </script>
     </body>
 </html>
