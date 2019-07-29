@@ -121,12 +121,14 @@ header {
 }
 
 .contact-form{
-    max-width: 300px;
+    width: 90%;
+    max-width: 640px; //100%; //300px
     float: left;
     margin: 0 auto;
     background: #ccc;
     border-radius: 6px;
     padding: 2rem 1.5rem;
+    font-size: 1rem;
 }
 
 .contact-form label{
@@ -138,15 +140,16 @@ header {
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea{
-    font-size: 2rem;
+    font-size: 1rem;
     padding: .5rem .25rem;
     max-width: 100%;
     margin-bottom: 1rem;
     box-sizing: border-box;
+    width: 100%;
 }
 
 .contact-form input[type="submit"]{
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: .5rem .25rem;
 }
 
