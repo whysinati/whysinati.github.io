@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Christa Fuhrhop</title>
+        <title>Christa - Contact</title>
         <link rel="stylesheet" type="text/css" href="./dist/css/main.css">
         <!-- <img src="https://www.gravatar.com/avatar/4678a33bf44c38e54a58745033b4d5c6?d=mm&s=64" alt="My Avatar"> -->
         <meta name="keywords" content="Christa, contact">
@@ -24,7 +24,7 @@
         <main>
             <h1>Contact Me!</h1>
             <form class="contact-form" action="https://formspree.io/contact.cf.hey@gmail.com" method="POST">
-                <input type="hidden" name="_next" value="https://whysinati.github.io/thanks">
+                <!--ONLY AVAILABLE on PAID plans <input type="hidden" name="_next" value="https://whysinati.github.io/thanks"> -->
                 <input type="text" name="_gotcha" style="display:none">
 
                 <div>
@@ -43,7 +43,7 @@
                 </div>
 
                 <div>
-                    <input type="hidden" name="_subject" value="New submission!">
+                    <input type="hidden" name="_subject" value="New GitHub page submission!">
                 </div>
 
                 <div>
@@ -59,14 +59,19 @@
             toggleMenu.addEventListener(
                 'mouseover',
                 function(){
+                    if(nav.style.display==='block'){
+                      nav.style.display='none';
+                    }else{nav.style.display='block'};
+                  }
+
                 // if(nav.style.display=='none'){
-                    nav.style.display='block';
+                    //nav.style.display='block';
                 // }else{
-                    nav.addEventListener('mouseout',
-                    function(){
-                        nav.style.display='none';
-                    },true);
-                },true
+                    //nav.addEventListener('mouseout',
+                    //function(){
+                        //nav.style.display='none';
+                    //},true);
+                //},true
             //   }
             );
             // nav.addEventListener('mouseout',

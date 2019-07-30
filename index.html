@@ -2,20 +2,23 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Hello, I am Christa Fuhrhop</title>
+        <title>Christa's Website</title>
 
-        <!-- <link rel="stylesheet" type="text/css" href="./dist/css/main.css"> -->
-        <link href="./dist/css/main.css" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./dist/css/main.css">
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
         <!-- <img src="https://www.gravatar.com/avatar/4678a33bf44c38e54a58745033b4d5c6?d=mm&s=64" alt="My Avatar"> -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="Christa">
-        <meta name="description" content="Welcome to Christa's Page!">
+        <meta name="keywords" content="Christa, homepage">
+        <meta name="description" content="Welcome to Christa's Website!">
     </head>
     <body>
         <header>
-          
-            <span class="logo">My Website</span>
             <a id="toggleMenu">Menu</a>
+            <span class="logo">
+              <h2 class="fas fa-hand-holding-heart" style="vertical-align: top;"></h2>
+              My Website
+            </span>
+            
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -33,17 +36,20 @@
               <br>
             </p>
             <p>
-              Also check out this little site I created to celebrate my favorite centenarian (redirects to another site):
+              Also check out this site I created to celebrate my favorite centenarian (redirects to another site):
               <br>
               <strong><a href="http://ohforthegodssake.com">Gram's 100th Birthday!</a></strong>
             </p>
+            <br>
+            <p>Lastly, here are my <strong><a href="https://github.com/whysinati">GitHub Repositories</a></strong>.</p>
         </main>
         <script>
 
             var toggleMenu = document.getElementById('toggleMenu');
             var nav = document.querySelector('nav');
             toggleMenu.addEventListener(
-              'click',
+              // 'click',
+              'mouseover',
               function(){
                 if(nav.style.display=='block'){
                   nav.style.display='none';
