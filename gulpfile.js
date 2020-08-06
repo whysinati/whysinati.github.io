@@ -1,35 +1,64 @@
 var gulp = require('gulp');
-var watch = require('gulp-watch');
 var cleanCSS = require('gulp-clean-css');
 var uglify = require('gulp-uglify-es').default;
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
-var merge = require('merge-stream');
 var scss = require('gulp-sass');
 
-gulp.task('default', ['watch']);
+/**
+ * Define the paths upon which the files to be *gulped* will reside.
+ * # styles - the name of a collection (this can be anything you like)
+ * # src - the files to be gulped, multiple paths would be listed inside of an 
+ * array
+ * # dest - the output location
+ * 
+ */
+var paths = {
+  styles: {
+    src: 'src/scss/**.scss',
+    dest: 'dist/css/',
+  }
+};
 
-gulp.task('build-css', function(){
-  //Create an unminified version
-  var full = gulp.src([
-    'src/scss/main.scss'
-  ])
-  . pipe(scss())
-  . pipe(concat('main.css'))
-  . pipe(gulp.dest('dist/css'));
+/**
+ * Define our tasks using plain functions
+ */
+function buildCSS() {
+  return gulp.src(paths.styles.src)
+    .pipe(scss())
+    .pipe(cleanCSS())
+    // pass in options to the stream
+    .pipe(rename({
+      basename: 'main',
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest(paths.styles.dest));
+}
 
-  //Create a minified version
-  var min = gulp.src([
-    'src/scss/main.scss'
-  ])
-  . pipe(scss())
-  . pipe(cleanCSS())
-  . pipe(concat('main.min.css'))
-  . pipe(gulp.dest('dist/css'));
+/**
+ * Define a list of tasks to be executed when `gulp watch` is executed.
+ */
+function watch() {
+  gulp.watch(paths.styles.src, buildCSS);
+}
 
-  return merge(full, min);
-});
+exports.buildCSS = buildCSS;
+exports.watch = watch;
 
-gulp.task('watch', function(){
-  gulp.watch('./src/scss/**/*.scss', ['build-css']);
-});
+/**
+ * Specify if tasks run in series or parallel using `gulp.series` and 
+ * `gulp.parallel`
+ */
+var build = gulp.series(gulp.parallel(buildCSS));
+
+/**
+ * Create a list of tasks that can be run manually
+ * Running `gulp build` from the CLI would execute the build task
+ */
+gulp.task('build', build);
+
+/**
+ * Define default task that can be called by just running `gulp` from the CLI
+ * this would be the same as running `gulp watch`
+ */
+gulp.task('default', watch);

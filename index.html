@@ -1,67 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Christa's Website</title>
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" type="text/css" href="./dist/css/main.css">
-        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
-        <!-- <img src="https://www.gravatar.com/avatar/4678a33bf44c38e54a58745033b4d5c6?d=mm&s=64" alt="My Avatar"> -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="Christa, homepage">
-        <meta name="description" content="Welcome to Christa's Website!">
-    </head>
-    <body>
-        <header>
-            <a id="toggleMenu">Menu</a>
-            <span class="logo">
-              <h2 class="fas fa-hand-holding-heart" style="vertical-align: top;"></h2>
-              My Website
-            </span>
-            
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="resume.html">Resume</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <h1>Hello, I'm Christa.</h1>
-            <p> <!--<img style="border-radius: 50%; float: right; margin-right: 1em;" src="..." alt="...">-->
-              <img style="border-radius: 10%; float: left; margin-right: 1em;" src="https://avatars2.githubusercontent.com/u/41346642?s=460&v=4" width = "90" alt="Christa's Avatar">
-              Check out my resume page: <strong><a href="resume.html">Resume</a></strong>.</p>
-            <p>Here is my <strong><a href="https://www.linkedin.com/in/christafuhrhop/" target="_blank">LinkedIn profile</a></strong>.</p>
-            <p>Here are my <strong><a href="https://github.com/whysinati" target="_blank">GitHub Repositories</a></strong>.</p>
-            <br>
-            <h2>My Projects</h2>
-            <div><a style="font-weight: bold;" href="http://imnotadancerijust.dance/" target="_blank">My CMS Blogging Site</a> -- LAMP Stack,
-              PHP, MySQL and login authentication features, served up by an AWS EC2 Instance</div>
-            <p><strong><a href="http://ohforthegodssake.com" target="_blank">Gram's 100th Birthday!</a></strong>
-              -- Celebrate my favorite centenarian with HTML and CSS spun up on a public AWS S3 Bucket
-            </p>
-            <div><a style="font-weight: bold;" href="http://whysinati.github.io/ng-ecomm" target="_blank">My Breakfast Cafe Online Ordering System</a>
-              -- Angular web framework, e-commerce fun, published via GitHub Pages</div>
-            <p><strong><a href="https://microtrain.net/signage/signage/view/1" target="_blank">MicroTrain Courses Today</a></strong>
-              -- CakePHP and MySQL combine to announce today's classes (F11 on a desktop-size display)
-            </p>
-        </main>
-        <script>
 
-            var toggleMenu = document.getElementById('toggleMenu');
-            var nav = document.querySelector('nav');
-            toggleMenu.addEventListener(
-              // 'click',
-              'mouseover',
-              function(){
-                if(nav.style.display=='block'){
-                  nav.style.display='none';
-                }else{
-                  nav.style.display='block';
-                }
-              }
-            );
-        </script>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Christa's Website</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="./dist/css/main.min.css">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css'
+    integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+  <!-- <img src="https://www.gravatar.com/avatar/4678a33bf44c38e54a58745033b4d5c6?d=mm&s=64" alt="My Avatar"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Christa, homepage">
+  <meta name="description" content="Welcome to Christa's Website!">
+</head>
+
+<body>
+  <header>
+    <a id="toggleMenu">Menu</a>
+    <span class="logo">
+      <h2 class="fas fa-hand-holding-heart"></h2>
+      My Website
+    </span>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Hello, I'm Christa.</h1>
+    <p>
+      <img id="avatar"
+        src="https://avatars2.githubusercontent.com/u/41346642?s=460&v=4" width="90" alt="Christa's Avatar">
+      Check out my resume page: <strong><a href="resume.html">Resume</a></strong>.</p>
+    <p>Here is my <strong><a href="https://www.linkedin.com/in/christafuhrhop/" target="_blank">LinkedIn
+          profile</a></strong>.</p>
+    <p>Here are my <strong><a href="https://github.com/whysinati" target="_blank">GitHub Repositories</a></strong>.</p>
+    <br>
+    <h2>My Projects</h2>
+    <ul>
+      <li>
+        <strong>Gram</strong> &mdash; Celebrating the life of my favorite centenarian; JavaScript, HMTL &amp; CSS
+        <ul>
+          <li>
+            <a href="http://ohforthegodssake.com" target="_blank">In Remembrance</a>
+          </li>
+          <li>
+            <a href="http://ohforthegodssake.com/index.html" target="_blank">100th Birthday</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="http://whysinati.github.io/ng-ecomm" target="_blank">My Breakfast Cafe Online Ordering System</a>
+        &mdash; Angular web framework, e-commerce fun, published via GitHub Pages
+      </li>
+      <li>
+        <a href="https://microtrain.net/signage/signage/view/1" target="_blank">MicroTrain Courses Today</a>
+        &mdash; CakePHP and MySQL combine to announce today's classes (F11 on a desktop-size display)
+      </li>
+      <li>
+        <a href="http://imnotadancerijust.dance/" target="_blank">My CMS Blogging Site</a>
+        &mdash; LAMP Stack, PHP, MySQL and login authentication features, served up by an AWS EC2 Instance
+      </li>
+      <li>
+        <a href="http://whysinati.github.io/ng-ecomm" target="_blank">Photo Gallery</a> <strong>NEW!</strong>
+        &mdash; React web library, beautiful pictures, AWS S3 web hosting
+      </li>
+    </ul>
+
+  </main>
+  <script>
+    var toggleMenu = document.getElementById('toggleMenu');
+    var nav = document.querySelector('nav');
+    toggleMenu.addEventListener(
+      // 'click',
+      'mouseover',
+      function () {
+        if (nav.style.display == 'block') {
+          nav.style.display = 'none';
+        } else {
+          nav.style.display = 'block';
+        }
+      }
+    );
+  </script>
+</body>
+
 </html>

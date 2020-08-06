@@ -63,12 +63,38 @@ header {
     max-width: 90%;
   }
 
+.logo h2 {
+  vertical-align: top;
+}
+
   #toggleMenu {
     display: none;
     padding: 0px 8px;
     // max-width: 90%;
   }
   
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin-bottom: 16px;
+}
+
+ul li ul li {
+  margin-bottom: 2px;
+}
+
+li a {
+  font-weight: bold;
+}
+
+#avatar {
+  border-radius: 10%; 
+  float: left; 
+  margin-right: 1em; 
+  padding-top: 4px;
+}
   @media only screen and (max-width: 667px)  { //960px)  {
 
     #toggleMenu {
