@@ -95,6 +95,16 @@ li a {
   margin-right: 1em; 
   padding-top: 4px;
 }
+
+
+/* hide the canvas as it is the "middleman" for the magic mirror photo download */
+#canvas {
+  display: none;
+}
+#video {
+  filter: drop-shadow(8px 8px 10px gray)
+};
+
   @media only screen and (max-width: 667px)  { //960px)  {
 
     #toggleMenu {

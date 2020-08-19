@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Mirror</title>
+    <link rel="stylesheet" type="text/css" href="./dist/css/main.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+    <meta name="keywords" content="Christa, webcam, video, stream">
+    <meta name="description" content="Welcome to Christa's Magic Mirror!">
+</head>
+<body>
+    <header>
+        <a id="toggleMenu">Menu</a>
+        <span class="logo">
+          <h2 class="fas fa-hand-holding-heart"></h2>
+          My Magic Mirror!
+        </span>
+    
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <!-- <li><a href="magic_mirror.html">Magic Mirror!</a></li> -->
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+    </header>
+    <main>
+    <h1>Magic Mirror</h1>
+    <p>Choose a special effect and make a silly face!</p>
+
+    <select>
+        <option value="">Normal..Choose an effect</option>
+        <option value="blur(10px)">Blur</option>
+        <option value="contrast(500%)">Contrast</option>
+        <option value="hue-rotate(90deg)">Color 1</option>
+        <option value="hue-rotate(180deg)">Color 2</option>
+        <option value="hue-rotate(270deg)">Color 3</option>
+        <option value="invert(100%)">Invert</option>
+        <option value="grayscale(100%)">Black & White</option>
+        <option value="sepia(100%)">Sepia</option>
+        <option value="invert(100%) grayscale(50%) hue-rotate(180deg)">Ghost</option>
+        <option value="blur(2px) brightness(100%) contrast(1000%) saturate(1000%) hue-rotate(200deg)">Pop Art</option>
+    </select>
+
+    <div>
+        <video id="video" autoplay src="">Video stream not available.</video>
+        <button id="startbutton">Take photo</button>
+    </div>
+
+
+    <canvas id="canvas">
+    </canvas>
+    <div class="output">
+      <img id="photo" alt="The screen capture will appear in this box.">
+      <button id="downloadbutton">Download photo</button>
+    </div>
+    </main>
+    <script>
+        var toggleMenu = document.getElementById('toggleMenu');
+        var nav = document.querySelector('nav');
+        toggleMenu.addEventListener(
+          // 'click',
+          'mouseover',
+          function () {
+            if (nav.style.display == 'block') {
+              nav.style.display = 'none';
+            } else {
+              nav.style.display = 'block';
+            }
+          }
+        );
+    </script>
+    <script>
+        (function() {
+            var width = 320;    // We will scale the photo width to this
+            var height = 0;     // This will be computed based on the input stream
+
+            var streaming = false;
+
+            var video = null;
+            var select = null;
+            var canvas = null;
+            var photo = null;
+            var startbutton = null;
+            var videoFilter = null;
+
+            function startup() {
+                video = document.querySelector('video')
+                select = document.querySelector('select');
+                canvas = document.getElementById('canvas');
+                photo = document.getElementById('photo');
+                startbutton = document.getElementById('startbutton');
+                downloadbutton = document.getElementById('downloadbutton');
+
+                videoFilter = window.getComputedStyle(video, null).getPropertyValue("filter");
+
+                // Asks user permission to use camera, then streams if granted
+                navigator.mediaDevices.getUserMedia({video: true, audio: false})
+                .then(function(stream) {
+                video.srcObject = stream;
+                })
+                .catch(function(err) {
+                console.log("An error occurred: " + err);
+                });
+
+                video.addEventListener('canplay', function(ev){
+                if (!streaming) {
+                    height = video.videoHeight / (video.videoWidth/width);
+                
+                    // Firefox currently has a bug where the height can't be read from
+                    // the video, so we will make assumptions if this happens.
+                
+                    if (isNaN(height)) {
+                    height = width / (4/3);
+                    }
+                
+                    video.setAttribute('width', width);
+                    video.setAttribute('height', height);
+                    canvas.setAttribute('width', width);
+                    canvas.setAttribute('height', height);
+                    streaming = true;
+                }
+                }, false);
+
+                startbutton.addEventListener('click', function(ev){
+                    takepicture();
+                    //downloadpicture()
+                    ev.preventDefault();
+                }, false);
+                
+                clearphoto();
+
+                // Setup event listener for the webcam image filter changes
+                select.addEventListener("change", changeEffect)
+
+            }
+
+            // Apply a filter to the webcam image
+
+            function changeEffect() {
+                let newEffect = ""
+                video.style.filter = newEffect.concat(select.value, " ", videoFilter)
+            }
+
+            // Fill the photo with an indication that none has been
+            // captured.
+
+            function clearphoto() {
+                var context = canvas.getContext('2d');
+                context.fillStyle = "#AAA";
+                context.fillRect(0, 0, canvas.width, canvas.height);
+
+                var data = canvas.toDataURL('image/png');
+                photo.setAttribute('src', data);
+            }
+            
+            // Capture a photo by fetching the current contents of the video
+            // and drawing it into a canvas, then converting that to a PNG
+            // format data URL. By drawing it on an offscreen canvas and then
+            // drawing that to the screen, we can change its size and/or apply
+            // other changes before drawing it.
+
+            function takepicture() {
+                var context = canvas.getContext('2d');
+                //console.log(video.style.filter);
+                //photo.style.filter = video.style.filter;
+                //context.style.filter = videoFilter;
+
+                if (width && height) {
+                    canvas.width = width;
+                    canvas.height = height;
+                    
+                    //apply the selected filter for the download 
+                    // '= video.style.filter' has same result despite added drop-shadow
+                    context.filter = select.value; 
+                    // note: unable to add drop-shadow in the picture download - 
+                    // is it a canvas sizing issue ? 
+                    context.drawImage(video, 0, 0, width, height);
+                    var data = canvas.toDataURL('image/png');
+                    photo.setAttribute('src', data);
+                    //photo.setAttribute("download", "YourFileName.png"); //nope
+                } else {
+                    clearphoto();
+                }
+                downloadbutton.addEventListener('click', function(ev){
+                    //takepicture();
+                    downloadpicture()
+                    ev.preventDefault();
+                }, false);
+            }
+
+            function downloadpicture() {
+                var url = photo.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+                // photo.setAttribute("download", "YourFileName.png"); //nope
+                window.open(url);
+            }
+
+            // Set up our event listener to run the startup process
+            // once loading is complete.
+            window.addEventListener('load', startup, false);
+
+        })();
+    </script>
+</body>
+</html>
