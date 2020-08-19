@@ -29,7 +29,7 @@
     <main>
     <h1>Magic Mirror</h1>
     <p>Choose a special effect and make a silly face!</p>
-
+    <br>
     <select>
         <option value="">Normal..Choose an effect</option>
         <option value="blur(10px)">Blur</option>
@@ -44,18 +44,21 @@
         <option value="blur(2px) brightness(100%) contrast(1000%) saturate(1000%) hue-rotate(200deg)">Pop Art</option>
     </select>
 
+    <button id="startbutton">Take photo</button>
+    <br>
+    <br>
+
     <div>
         <video id="video" autoplay src="">Video stream not available.</video>
-        <button id="startbutton">Take photo</button>
     </div>
+    <br>
 
+    <canvas id="canvas"></canvas>
 
-    <canvas id="canvas">
-    </canvas>
     <div class="output">
       <img id="photo" alt="The screen capture will appear in this box.">
-      <button id="downloadbutton">Download photo</button>
     </div>
+
     </main>
     <script>
         var toggleMenu = document.getElementById('toggleMenu');
@@ -92,9 +95,11 @@
                 canvas = document.getElementById('canvas');
                 photo = document.getElementById('photo');
                 startbutton = document.getElementById('startbutton');
-                downloadbutton = document.getElementById('downloadbutton');
 
                 videoFilter = window.getComputedStyle(video, null).getPropertyValue("filter");
+
+                // Hide the photo snapshot window until a photo is taken
+                photo.style.display = "none";
 
                 // Asks user permission to use camera, then streams if granted
                 navigator.mediaDevices.getUserMedia({video: true, audio: false})
@@ -126,7 +131,7 @@
 
                 startbutton.addEventListener('click', function(ev){
                     takepicture();
-                    //downloadpicture()
+                    downloadpicture()
                     ev.preventDefault();
                 }, false);
                 
@@ -164,37 +169,43 @@
 
             function takepicture() {
                 var context = canvas.getContext('2d');
-                //console.log(video.style.filter);
-                //photo.style.filter = video.style.filter;
-                //context.style.filter = videoFilter;
 
                 if (width && height) {
                     canvas.width = width;
                     canvas.height = height;
                     
-                    //apply the selected filter for the download 
-                    // '= video.style.filter' has same result despite added drop-shadow
+                    // apply the selected filter effect for the download 
                     context.filter = select.value; 
-                    // note: unable to add drop-shadow in the picture download - 
-                    // is it a canvas sizing issue ? 
+                    // note: unable to add drop-shadow in the picture download
+                    // --seems to be cutoff by the canvas sizing 
                     context.drawImage(video, 0, 0, width, height);
                     var data = canvas.toDataURL('image/png');
+                    // show the photo snapshot taken
+                    photo.style.display = "unset";
+                    photo.setAttribute('title', "Click here to download photo!");
                     photo.setAttribute('src', data);
-                    //photo.setAttribute("download", "YourFileName.png"); //nope
                 } else {
                     clearphoto();
                 }
-                downloadbutton.addEventListener('click', function(ev){
-                    //takepicture();
-                    downloadpicture()
-                    ev.preventDefault();
-                }, false);
             }
 
             function downloadpicture() {
-                var url = photo.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
-                // photo.setAttribute("download", "YourFileName.png"); //nope
-                window.open(url);
+                // add anchor tag around img tag and use download attribute
+                var parent = photo.parentNode;
+                var wrapper = document.createElement('a');
+
+                wrapper.setAttribute("download", "YourMagicMirrorPhoto.png");
+                wrapper.setAttribute("href", photo.src);
+
+                // set anchor tag as parent instead of image tag
+                parent.replaceChild(wrapper, photo);
+                // re-add image tag as child of anchor tag
+                wrapper.appendChild(photo);
+
+                if (!document.querySelector('.output p')) 
+                    {
+                    document.querySelector('.output').appendChild(document.createElement("p")).innerHTML = 'Click the photo to download';
+                };
             }
 
             // Set up our event listener to run the startup process
