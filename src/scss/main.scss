@@ -96,6 +96,21 @@ li a {
   padding-top: 4px;
 }
 
+/* Hover over links for website preview */ 
+.tiptext {
+  /* color:#069;  */
+  cursor:pointer;
+  /* border-bottom: teal; */
+  border-bottom: 1px dotted;
+  text-decoration: none;
+}
+.description {
+  display:none;
+  position:absolute;
+  border:1px solid #000;
+  width:400px;
+  height:400px;
+}
 
 /* hide the canvas as it is the "middleman" for the magic mirror photo download */
 #canvas {
