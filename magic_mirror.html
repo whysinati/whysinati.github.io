@@ -204,7 +204,10 @@
 
                 if (!document.querySelector('.output p')) 
                     {
-                    document.querySelector('.output').appendChild(document.createElement("p")).innerHTML = 'Click the photo to download';
+                    // document.querySelector('.output').appendChild(document.createElement("p")).innerHTML = 'Click the photo to download';
+                    let para = document.createElement('p');
+                    para.appendChild(document.createTextNode('Click the photo to download'));
+                    document.querySelector('.output').appendChild(para);
                 };
             }
 
