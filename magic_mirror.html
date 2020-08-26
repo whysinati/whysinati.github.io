@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magic Mirror</title>
+    <title>Magic Mirror!</title>
+    <meta property=”og:title” content="Magic Mirror!" />
+    <meta property=”og:description” content="Welcome to Christa's Magic Mirror!" />
+    <meta property=”og:url” content="https://whysinati.github.io/magic_mirror.html" />
+    <meta property=”og:image” content="https://whysinati.github.io/favicon.png" />
     <link rel="stylesheet" type="text/css" href="./dist/css/main.min.css">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
     <meta name="keywords" content="Christa, webcam, video, stream">
@@ -204,7 +208,6 @@
 
                 if (!document.querySelector('.output p')) 
                     {
-                    // document.querySelector('.output').appendChild(document.createElement("p")).innerHTML = 'Click the photo to download';
                     let para = document.createElement('p');
                     para.appendChild(document.createTextNode('Click the photo to download'));
                     document.querySelector('.output').appendChild(para);
